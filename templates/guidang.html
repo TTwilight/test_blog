@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% for article_list in article_lists %}
+        <h2>{{ article_list.first.category  }}</h2>
+        {% for article in article_list %}
+        <ul>
+            <li><a href='{% url 'article_detail'  article.title %}'>{{ article.title }}</a></li>
+            <li><span>分类：<a href="{% url "article_category" article.category %}" >{{ article.category }}</a></span><span>创建时间：{{ article.date_time }}</span></li>
+            <li>{{ article.content|slice:":40" }}<a href="{% url 'article_detail'  article.title %}">......More</a></li>
+        </ul>
+
+        {% endfor %}
+    {% endfor %}
+{% endblock %}

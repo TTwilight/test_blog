@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Search Result</h1>
+    <div>
+    <h2>{{ search1 }}</h2>
+    {% if not article_list1 %}
+        <h3>没有找到相似的文章</h3>
+    {% else %}
+    {% for article in article_list1 %}
+        <ul>
+            <li><a href='{% url 'article_detail'  article.title %}'>{{ article.title }}</a></li>
+            <li><span>分类：<a href="{% url "article_category" article.category %}" >{{ article.category }}</a></span><span>创建时间：{{ article.date_time }}</span></li>
+            <li>{{ article.content|slice:":40" }}<a href="{% url 'article_detail'  article.title %}">......More</a></li>
+        </ul>
+    {% endfor %}
+    {% endif %}
+    </div>
+
+    <div>
+    <h2>{{ search2 }}</h2>
+    {% if not article_list2 %}
+        <h3>没有找到相似的文章</h3>
+    {% else %}
+    {% for article in article_list2 %}
+        <ul>
+            <li><a href='{% url 'article_detail'  article.title %}'>{{ article.title }}</a></li>
+            <li><span>分类：<a href="{% url "article_category" article.category %}" >{{ article.category }}</a></span><span>创建时间：{{ article.date_time }}</span></li>
+            <li>{{ article.content|slice:":40" }}<a href="{% url 'article_detail'  article.title %}">......More</a></li>
+        </ul>
+    {% endfor %}
+    {% endif %}
+    </div>
+{% endblock %}

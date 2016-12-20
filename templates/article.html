@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>{{ article.title }}</h2>
+    <p><span><a href="{% url 'article_category' article.category%}" >分类：{{ article.category }}</a></span><span>创建时间：{{ article.date_time }}</span></p>
+    <p>{{ article.content }}</p>
+
+{% endblock %}
